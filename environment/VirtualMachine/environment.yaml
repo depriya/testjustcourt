@@ -41,7 +41,7 @@ parameters:
 - id: "useExistingVNet"
   name: "Use Existing VNet"
   type: "string"
-  required: true
+  required: false
   default: "true"
 
 # 🔹 EXISTING VNET DETAILS
