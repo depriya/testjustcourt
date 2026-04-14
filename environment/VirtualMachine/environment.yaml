@@ -1,0 +1,83 @@
+# Copyright (C) Microsoft Corporation.
+
+# yaml-language-server: $schema=https://github.com/eclipse-symphony/deployment-environments/releases/download/2022-11-11-preview/manifest.schema.json
+# For more information on this file, please refer to https://learn.microsoft.com/en-us/azure/deployment-environments/configure-environment-definition
+name: VirtualMachine
+version: 1.0.0
+summary: Deploys an Azure VM.
+description: Deploys an Azure VM.
+runner: ARM
+templatePath: env.ARM.template.json
+parameters:
+- id: "imageReference"
+  name: "imageReference"
+  type: "string"
+  required: true
+- id: "location"
+  name: "location"
+  type: "string"
+  required: true
+- id: "useExistingVNet"
+  name: "useExistingVNet"
+  type: "string"
+  required: false
+- id: "virtualNetworkName"
+  name: "virtualNetworkName"
+  type: "string"
+  required: true
+- id: "virtualNetworkResourceGroupName"
+  name: "virtualNetworkResourceGroupName"
+  type: "string"
+  required: false
+- id: "addressPrefixes"
+  name: "addressPrefixes"
+  type: "array"
+  required: false
+- id: "subnetAddressPrefix"
+  name: "subnetAddressPrefix"
+  type: "string"
+  required: false
+- id: "networkSecurityGroupName"
+  name: "networkSecurityGroupName"
+  type: "string"
+  required: false
+- id: "networkSecurityGroupRules"
+  name: "networkSecurityGroupRules"
+  type: "array"
+  required: false
+- id: "networkInterfaceName"
+  name: "networkInterfaceName"
+  type: "string"
+  required: true
+- id: "networkInterfaceIPConfigurationName"
+  name: "networkInterfaceIPConfigurationName"
+  type: "string"
+  required: true
+- id: "networkInterfaceIPConfigurationSubnetName"
+  name: "networkInterfaceIPConfigurationSubnetName"
+  type: "string"
+  required: true
+- id: "virtualMachineName"
+  name: "virtualMachineName"
+  type: "string"
+  required: true
+- id: "virtualMachineZone"
+  name: "virtualMachineZone"
+  type: "string"
+  required: false
+- id: "osDiskType"
+  name: "osDiskType"
+  type: "string"
+  required: false
+- id: "osDiskDeleteOption"
+  name: "osDiskDeleteOption"
+  type: "string"
+  required: false
+- id: "virtualMachineSize"
+  name: "virtualMachineSize"
+  type: "string"
+  required: false
+- id: "nicDeleteOption"
+  name: "nicDeleteOption"
+  type: "string"
+  required: false
