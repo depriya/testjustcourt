@@ -1,83 +1,94 @@
-# Copyright (C) Microsoft Corporation.
-
 # yaml-language-server: $schema=https://github.com/eclipse-symphony/deployment-environments/releases/download/2022-11-11-preview/manifest.schema.json
-# For more information on this file, please refer to https://learn.microsoft.com/en-us/azure/deployment-environments/configure-environment-definition
+
 name: VirtualMachine
 version: 1.0.0
-summary: Deploys an Azure VM.
-description: Deploys an Azure VM.
+summary: Deploys an Azure VM using Azure Compute Gallery image
+description: Deploys an Azure VM using an existing VNet and subnet.
+
 runner: ARM
 templatePath: env.ARM.template.json
+
 parameters:
+
+# 🔴 REQUIRED - must be full Compute Gallery image resource ID
 - id: "imageReference"
-  name: "imageReference"
+  name: "Image Reference (Compute Gallery Resource ID)"
   type: "string"
   required: true
+
+# 🔴 REQUIRED
 - id: "location"
-  name: "location"
+  name: "Location"
   type: "string"
   required: true
+
+# 🔹 EXISTING VNET FLAG (default true for your case)
 - id: "useExistingVNet"
-  name: "useExistingVNet"
+  name: "Use Existing VNet"
   type: "string"
-  required: false
+  required: true
+  default: "true"
+
+# 🔹 EXISTING VNET DETAILS
 - id: "virtualNetworkName"
-  name: "virtualNetworkName"
+  name: "Virtual Network Name"
   type: "string"
   required: true
+
 - id: "virtualNetworkResourceGroupName"
-  name: "virtualNetworkResourceGroupName"
+  name: "Virtual Network Resource Group"
   type: "string"
-  required: false
-- id: "addressPrefixes"
-  name: "addressPrefixes"
-  type: "array"
-  required: false
-- id: "subnetAddressPrefix"
-  name: "subnetAddressPrefix"
-  type: "string"
-  required: false
-- id: "networkSecurityGroupName"
-  name: "networkSecurityGroupName"
-  type: "string"
-  required: false
-- id: "networkSecurityGroupRules"
-  name: "networkSecurityGroupRules"
-  type: "array"
-  required: false
+  required: true
+
+# 🔹 NETWORK (NIC + SUBNET)
 - id: "networkInterfaceName"
-  name: "networkInterfaceName"
+  name: "Network Interface Name"
   type: "string"
   required: true
+
 - id: "networkInterfaceIPConfigurationName"
-  name: "networkInterfaceIPConfigurationName"
+  name: "NIC IP Configuration Name"
   type: "string"
   required: true
+
 - id: "networkInterfaceIPConfigurationSubnetName"
-  name: "networkInterfaceIPConfigurationSubnetName"
+  name: "Subnet Name"
   type: "string"
   required: true
+
+# 🔹 VM
 - id: "virtualMachineName"
-  name: "virtualMachineName"
+  name: "Virtual Machine Name"
   type: "string"
   required: true
-- id: "virtualMachineZone"
-  name: "virtualMachineZone"
-  type: "string"
-  required: false
-- id: "osDiskType"
-  name: "osDiskType"
-  type: "string"
-  required: false
-- id: "osDiskDeleteOption"
-  name: "osDiskDeleteOption"
-  type: "string"
-  required: false
+
+# 🔹 OPTIONAL (with safe defaults from ARM)
 - id: "virtualMachineSize"
-  name: "virtualMachineSize"
+  name: "VM Size"
   type: "string"
   required: false
+  default: "Standard_D2ps_v5"
+
+- id: "osDiskType"
+  name: "OS Disk Type"
+  type: "string"
+  required: false
+  default: "StandardSSD_LRS"
+
+- id: "osDiskDeleteOption"
+  name: "OS Disk Delete Option"
+  type: "string"
+  required: false
+  default: "Delete"
+
+- id: "virtualMachineZone"
+  name: "Availability Zone"
+  type: "string"
+  required: false
+  default: "1"
+
 - id: "nicDeleteOption"
-  name: "nicDeleteOption"
+  name: "NIC Delete Option"
   type: "string"
   required: false
+  default: "Delete"
