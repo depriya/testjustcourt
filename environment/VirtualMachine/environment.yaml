@@ -11,8 +11,23 @@ templatePath: env.ARM.template.json
 parameters:
 
 # 🔴 REQUIRED - must be full Compute Gallery image resource ID
-- id: "imageReference"
-  name: "Image Reference (Compute Gallery Resource ID)"
+#- id: "imageReference"
+ # name: "Image Reference (Compute Gallery Resource ID)"
+  #type: "string"
+  #required: true
+
+- id: "imagePublisher"
+  name: "Image publisher"
+  type: "string"
+  required: true
+
+- id: "imageOffer"
+  name: "Image offer"
+  type: "string"
+  required: true
+
+- id: "imageSku"
+  name: "Image Sku"
   type: "string"
   required: true
 
