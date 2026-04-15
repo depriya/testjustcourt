@@ -10,7 +10,7 @@ templatePath: env.ARM.template.json
 
 parameters:
 
-# 🔴 REQUIRED - must be full Compute Gallery image resource ID
+# REQUIRED - must be full Compute Gallery image resource ID
 #- id: "imageReference"
  # name: "Image Reference (Compute Gallery Resource ID)"
   #type: "string"
@@ -31,20 +31,20 @@ parameters:
   type: "string"
   required: true
 
-# 🔴 REQUIRED
+# REQUIRED
 - id: "location"
   name: "Location"
   type: "string"
   required: true
 
-# 🔹 EXISTING VNET FLAG (default true for your case)
+#  EXISTING VNET FLAG (default true for your case)
 - id: "useExistingVNet"
   name: "Use Existing VNet"
   type: "string"
   required: false
   default: "true"
 
-# 🔹 EXISTING VNET DETAILS
+#  EXISTING VNET DETAILS
 - id: "virtualNetworkName"
   name: "Virtual Network Name"
   type: "string"
@@ -55,7 +55,7 @@ parameters:
   type: "string"
   required: true
 
-# 🔹 NETWORK (NIC + SUBNET)
+#  NETWORK (NIC + SUBNET)
 - id: "networkInterfaceName"
   name: "Network Interface Name"
   type: "string"
@@ -71,13 +71,13 @@ parameters:
   type: "string"
   required: true
 
-# 🔹 VM
+#  VM
 - id: "virtualMachineName"
   name: "Virtual Machine Name"
   type: "string"
   required: true
 
-# 🔹 OPTIONAL (with safe defaults from ARM)
+#  OPTIONAL (with safe defaults from ARM)
 - id: "virtualMachineSize"
   name: "VM Size"
   type: "string"
