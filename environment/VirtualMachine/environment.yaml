@@ -1,5 +1,3 @@
-# yaml-language-server: $schema=https://github.com/eclipse-symphony/deployment-environments/releases/download/2022-11-11-preview/manifest.schema.json
-
 name: VirtualMachine
 version: 1.0.0
 summary: Deploys an Azure VM using Azure Compute Gallery image
